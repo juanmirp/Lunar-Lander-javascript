@@ -14,14 +14,14 @@ var gameOver=false;
 //al cargar por completo la página...
 window.onload = function(){
 	
-document.onmousedown = function () {
+document.onmousedown= function () {
  	  if(a==g&&!pause){
   		motorOn();
  	  } else {
   		motorOff();
  	  }
 	}
-	document.onmouseup=motorOff;
+ document.onmouseup=motorOff;
 	
 	document.getElementsByClassName("pausa")[0].onclick=function(){
 		mostrarPausa();
@@ -81,6 +81,8 @@ document.onmousedown = function () {
 	//encender/apagar al apretar/soltar una tecla
 	document.onkeydown = motorOn;
 	document.onkeyup = motorOff;
+	document.ontouchstart=motorOn;
+	document.ontouchend=motorOff;
 	
 	//Empezar a mover nave
 	start();
@@ -124,8 +126,6 @@ function moverNave(){
 	
 }
 function motorOn(){
-	
-
 	if(y>1){
      a=-g
 	 naveFuego();
@@ -144,13 +144,16 @@ function motorOff(){
 	
 }
 function actualizarFuel(){
-	if(fuel>0){
-		fuel-=0.1;
-	document.getElementById("progressBar").value=fuel;
-	}
-	else{
-		motorOff();
-	}
+	
+	if(!gameOver){
+		 if(fuel>0){
+		 fuel-=0.1;
+	     document.getElementById("progressBar").value=fuel;
+          	}
+	     else{
+		 motorOff();
+	     }
+	             }
 }
 
 function mostrarPausa(){
@@ -190,6 +193,7 @@ function mostrarHelp (){
 		
 	}
 	function ganar(){
+		gameOver=true;
 		document.getElementsByClassName("fin")[0].style.display="block";
 		document.getElementsByClassName("fintexto")[0].innerHTML="Has ganado!!";
 	}
