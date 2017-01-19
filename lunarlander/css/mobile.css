@@ -22,12 +22,12 @@ body{
 	}
 	
 	.herramientas{
-		 background-image:url(../img/herramientas.png);
-	     background-repeat: no-repeat;
+         background-image:url(../img/herramientas.png);
+	 background-repeat: no-repeat;
          background-size: contain;
          position: absolute;
          left: 2%;
-         top: -4%;
+         top: -6%;
          width: 22%;
          height: 120px;
 		 opacity:0.5;
